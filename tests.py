@@ -25,7 +25,7 @@ class TestLogin(unittest.TestCase):
         self.driver = webdriver.Chrome('/Users/andrii/Downloads/chromedriver_mac64/chromedriver') #Firefox, Explorer, Safari
         self.driver.get('https://courses.ultimateqa.com/users/sign_in')
         self.driver.maximize_window()
-        '''self.driver.add_cookie({'name': 'visitor_id', 'value': '317826872', 'domain': '.ultimateqa.com'}) #will work to get past capcha at a local machine, if add all google cookies. But only the time wile cookie is available;
+        self.driver.add_cookie({'name': 'visitor_id', 'value': '317826872', 'domain': '.ultimateqa.com'}) #will work to get past capcha at a local machine, if add all google cookies. But only the time wile cookie is available;
         self.driver.add_cookie({'name': '1P_JAR', 'value': '2019-8-16-8', 'domain': '.google.com'})
         self.driver.add_cookie({'name': 'ANID', 'value': 'AHWqTUmM7mUzSXbuvCupxc5ZjD3x1wT5WwBPUKSGXLt_zVUk6fzwKO-CDbfVBali', 'domain': '.google.com'})
         self.driver.add_cookie({'name': 'APISID', 'value': 'xmAODungRPICK7_n/A6m1DPNEZ5hdCymQd', 'domain': '.google.com'})
@@ -36,13 +36,13 @@ class TestLogin(unittest.TestCase):
         self.driver.add_cookie({'name': 'SEARCH_SAMESITE', 'value': 'CgQIy40B', 'domain': '.google.com'})
         self.driver.add_cookie({'name': 'SID', 'value': 'nQdUoIkrkPhWkd-dWq--qfkaSFz8oNRJQjiklVIwJp4kVl0oOP6r8o9Udaslu-SU7TRKeQ.', 'domain': '.google.com'})
         self.driver.add_cookie({'name': 'SIDCC', 'value': 'AN0-TYubMppZ97O0vkN3ZsCyGqu06LPFf3mbXn0ZeUUm_0X6AFTwghIb9gt1NXlcter3OyRHJA', 'domain': '.google.com'})
-        self.driver.add_cookie({'name': 'SSID', 'value': 'A4G1XdlG6rmYR8Ux3', 'domain': '.google.com'})'''
+        self.driver.add_cookie({'name': 'SSID', 'value': 'A4G1XdlG6rmYR8Ux3', 'domain': '.google.com'})
 
     def test_login_positive(self):
         page.LoginField.email_field_enter_value(self, valid_email)
         page.PassWordField.password_field_enter_value(self, valid_pass)
         try:
-            element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(page.SighnInButton.get_button(self)))
+            element = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locators.LoginPageLocators.sigh_in_button))
         finally:
             self.driver.quit()
         page.SighnInButton.click_button(self)
